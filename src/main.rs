@@ -1,5 +1,6 @@
 fn main() {
     println!("Hello from Rust CI in branch: {}", std::env::var("BRANCH_NAME").unwrap_or("unknown".to_string()));
+    println!("New feature!");
 }
 
 #[cfg(test)]
