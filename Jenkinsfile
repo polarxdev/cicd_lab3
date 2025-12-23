@@ -25,22 +25,6 @@ pipeline {
                 echo 'Тесты пройдены'
             }
         }
-
-        stage('Artifact') {
-            steps {
-                sh 'cp target/release/jenkins-rust-demo ./rust-artifact-${BRANCH_NAME}'
-                archiveArtifacts artifacts: 'rust-artifact-*', fingerprint: true
-            }
-        }
-
-        stage('Branch Specific') {
-            when {
-                expression { env.BRANCH_NAME == 'main' }
-            }
-            steps {
-                echo 'Это продакшен-ветка! Готово к деплою.'
-            }
-        }
     }
 
     post {
